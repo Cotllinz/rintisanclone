@@ -13,6 +13,7 @@
         <featureBrand />
         <veriviedBusiness />
         <ArtikelComponent />
+        <limputanMedia />
       </a-layout-content>
       <a-layout-footer style="text-align: center">
         Ant Design ©2018 Created by Ant UED
@@ -33,6 +34,7 @@ import risingStarComponent from '../components/HomePages/RisingStarComponent.vue
 import featureBrand from '../components/HomePages/FeaturedBrandComponent'
 import veriviedBusiness from '../components/HomePages/VerifiedBusiness'
 import ArtikelComponent from '../components/HomePages/ArtikelComponent.vue'
+import limputanMedia from '../components/HomePages/liputanComponent.vue'
 export default {
   name: 'HomePage',
   components: {
@@ -45,7 +47,8 @@ export default {
     risingStarComponent,
     featureBrand,
     veriviedBusiness,
-    ArtikelComponent
+    ArtikelComponent,
+    limputanMedia
   },
   data() {
     return {

@@ -1,0 +1,16 @@
+{
+  "icon": {
+    "Media1": "assets/Images/Icons/Social (1).png",
+    "Media2": "assets/Images/Icons/Social (2).png",
+    "Media3": "assets/Images/Icons/Social (3).png",
+    "Media4": "assets/Images/Icons/Social (4).png"
+  },
+  "Partner": {
+    "Partner1": "assets/Images/Patners/Media-01.png",
+    "Partner2": "assets/Images/Patners/Media-02.png",
+    "Partner3": "assets/Images/Patners/Media-03.png",
+    "Partner4": "assets/Images/Patners/Media-04.png",
+    "Partner5": "assets/Images/Patners/Media-05.png",
+    "Partner6": "assets/Images/Patners/Media-06.png"
+  }
+}
