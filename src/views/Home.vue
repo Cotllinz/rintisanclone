@@ -9,6 +9,10 @@
         <bisnisComponent />
         <populerCategory />
         <whyRintisan />
+        <risingStarComponent />
+        <featureBrand />
+        <veriviedBusiness />
+        <ArtikelComponent />
       </a-layout-content>
       <a-layout-footer style="text-align: center">
         Ant Design ©2018 Created by Ant UED
@@ -25,6 +29,10 @@ import caraouselContent from '../components/HomePages/caraouselContent.vue'
 import bisnisComponent from '../components/HomePages/BisnisComponent.vue'
 import populerCategory from '../components/HomePages/PopulerCategory.vue'
 import whyRintisan from '../components/HomePages/WhyRintisan.vue'
+import risingStarComponent from '../components/HomePages/RisingStarComponent.vue'
+import featureBrand from '../components/HomePages/FeaturedBrandComponent'
+import veriviedBusiness from '../components/HomePages/VerifiedBusiness'
+import ArtikelComponent from '../components/HomePages/ArtikelComponent.vue'
 export default {
   name: 'HomePage',
   components: {
@@ -33,7 +41,11 @@ export default {
     caraouselContent,
     bisnisComponent,
     populerCategory,
-    whyRintisan
+    whyRintisan,
+    risingStarComponent,
+    featureBrand,
+    veriviedBusiness,
+    ArtikelComponent
   },
   data() {
     return {

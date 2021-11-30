@@ -92,7 +92,6 @@ export default defineComponent({
   align-items: center;
 }
 .ant-carousel :deep(.slick-slide) {
-  text-align: center;
   height: max-content;
   margin-bottom: 20px;
   overflow: hidden;

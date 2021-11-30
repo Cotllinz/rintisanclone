@@ -1,13 +1,16 @@
 <template>
-  <a-row class="row__populer">
+  <a-row class="row__verified">
     <a-col :span="16" :offset="4">
-      <section class="title__Populer">
-        <h2>Kategori Populer</h2>
-        <p>Temukan kategori bisnis terpopuler</p>
+      <section class="title__verified">
+        <h2>Verified Business</h2>
+        <p>
+          Temukan bisnis yang telah memiliki sistem dan legalitas yang telah
+          terverifikasi oleh Rintisan
+        </p>
       </section>
     </a-col>
     <a-col :span="16" :offset="4">
-      <section class="title__Populer">
+      <section class="title__verified">
         <a-carousel :slidesToShow="4" :dots="false" class="slick" arrows>
           <template #prevArrow>
             <div class="custom-slick-arrow" style="left: -12px; zindex: 1">
@@ -41,13 +44,16 @@
         </a-carousel>
       </section>
     </a-col>
+    <a-col :span="24">
+      <a-button class="buttonShowAll">Lihat Semua</a-button>
+    </a-col>
   </a-row>
 </template>
 <script>
-import { defineComponent } from 'vue'
 import { RightOutlined, LeftOutlined } from '@ant-design/icons-vue'
+import { defineComponent } from 'vue'
 export default defineComponent({
-  name: 'PopulerCategory',
+  name: 'VerifiedBusines',
   components: {
     LeftOutlined,
     RightOutlined
@@ -55,16 +61,15 @@ export default defineComponent({
 })
 </script>
 <style scoped>
-.title__Populer h2 {
+.title__verified h2 {
   font-size: 23px;
   font-weight: bold;
   margin: 0;
 }
-
-.title__Populer h2 span {
+.title__verified h2 span {
   color: rgb(255, 38, 237);
 }
-.row__populer {
+.row__verified {
   margin-top: 30px;
 }
 .card_images {
@@ -75,7 +80,7 @@ export default defineComponent({
   height: 110px;
   object-fit: cover;
 }
-.title__Populer {
+.title__verified {
   margin-top: 20px;
 }
 
@@ -103,9 +108,26 @@ export default defineComponent({
   color: rgb(255, 55, 255);
   font-size: 20px;
 }
+.buttonShowAll {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 45px;
+  color: #fff;
+  border-radius: 10px;
+  text-align: center;
+  height: max-content;
+  background: rgb(188, 111, 15);
+  background: linear-gradient(
+    354deg,
+    rgba(188, 111, 15, 1) 0%,
+    rgba(255, 4, 207, 1) 49%,
+    rgba(255, 4, 254, 1) 72%
+  );
+  border: none;
+}
 
 .ant-carousel :deep(.slick-arrow.custom-slick-arrow) {
-  transform: translateY(-50%);
+  transform: translateY(-100%);
   z-index: 1;
 }
 .ant-carousel :deep(.custom-slick-arrow:before) {
