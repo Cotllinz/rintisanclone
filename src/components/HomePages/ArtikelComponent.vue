@@ -23,7 +23,7 @@
                   src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
                 />
               </template>
-              <a-card-meta title="Berita Terkini">
+              <a-card-meta title="Artikel Terkini">
                 <template #avatar>
                   <a-avatar
                     src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"

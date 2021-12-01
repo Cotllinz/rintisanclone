@@ -12,5 +12,16 @@
     "Partner4": "assets/Images/Patners/Media-04.png",
     "Partner5": "assets/Images/Patners/Media-05.png",
     "Partner6": "assets/Images/Patners/Media-06.png"
-  }
+  },
+
+  "AboutText": [
+    "Apa itu Cermati.com?",
+    "FAQ",
+    "Hubungi Kami",
+    "Karir",
+    "Artikel",
+    "Syarat & Ketentuan",
+    "Kebijakan Privasi",
+    "Direktori Situs"
+  ]
 }

@@ -1,9 +1,9 @@
 <template>
   <a-row class="bg_liputan">
     <a-col :span="16" :offset="4">
-      <h2>Liputan Media</h2>
+      <h2 class="title">Liputan Media</h2>
     </a-col>
-    <a-col :span="16" :offset="4">
+    <a-col :span="16" class="images__partner" :offset="4">
       <div>
         <a-row :gutter="16">
           <a-col class="gutter-row" :span="8">
@@ -83,9 +83,17 @@ export default defineComponent({
   );
   margin-top: 70px;
 }
+.title {
+  margin: 30px 0;
+  text-align: center;
+  color: #fff;
+}
+.images__partner {
+  margin-bottom: 40px;
+}
 .gutter-box {
-  background: #00a0e9;
-  padding: 5px 0;
+  padding: 15px 0;
+  text-align: center;
   margin: 10px 0;
 }
 </style>

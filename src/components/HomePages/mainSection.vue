@@ -1,80 +1,169 @@
 <template>
   <a-row class="">
-    <a-col :lg="24" class="selection__franchese">
-      <a-space :size="20">
-        <section class="holdSlider">
-          <a-button
-            class="slinderStyle"
-            :class="showValue ? '' : 'btnFrenchese'"
-            @click="activedSlider"
+    <a-col :span="24">
+      <div class="selection__franchese">
+        <a-space :size="20">
+          <section class="holdSlider">
+            <a-button
+              class="slinderStyle"
+              :class="showValue ? '' : 'btnFrenchese'"
+              @click="activedSlider"
+            >
+              {{
+                showValue
+                  ? `Rp. ${parseInt(value[0])?.toLocaleString(
+                      'id-ID'
+                    )} - Rp. ${parseInt(value[1])?.toLocaleString('id-ID')}`
+                  : 'Harga Franchise'
+              }}
+              <DownOutlined v-if="!showValue" class="logoFranchise" />
+            </a-button>
+            <div v-if="showSlider == true" class="slider__franchaseSalary">
+              <a-card :bordered="true" @mouseleave="close" class="cardSlider">
+                <a-row>
+                  <a-col class="title__price" :span="24">
+                    <p>Price Range :</p>
+                    <p>
+                      {{
+                        `Rp. ${parseInt(value[0])?.toLocaleString(
+                          'id-ID'
+                        )} - Rp. ${parseInt(value[1])?.toLocaleString('id-ID')}`
+                      }}
+                    </p>
+                    <a-slider
+                      class="slider__style"
+                      v-model:value="value"
+                      @change="read()"
+                      range
+                      :step="1000"
+                      :max="1000000"
+                      :min="0"
+                      :tip-formatter="null"
+                    />
+                  </a-col>
+                </a-row>
+              </a-card>
+            </div>
+          </section>
+
+          <a-select
+            v-model:value="valueMultiple"
+            mode="multiple"
+            class="sliderMultipled slinderStyle"
+            placeholder="Lokasi"
+            :showArrow="true"
+            :options="
+              valueOption.map((item, i) => ({
+                value: item
+              }))
+            "
           >
-            {{
-              showValue
-                ? `Rp. ${parseInt(value[0])?.toLocaleString(
-                    'id-ID'
-                  )} - Rp. ${parseInt(value[1])?.toLocaleString('id-ID')}`
-                : 'Harga Franchise'
-            }}
-            <DownOutlined v-if="!showValue" class="logoFranchise" />
-          </a-button>
-          <div v-if="showSlider == true" class="slider__franchaseSalary">
-            <a-card :bordered="true" @mouseleave="close" class="cardSlider">
-              <a-row>
-                <a-col :span="24">
-                  <p>Price Range :</p>
-                  <p>
-                    {{
-                      `Rp. ${parseInt(value[0])?.toLocaleString(
+          </a-select>
+          <a-select
+            placeholder="industri"
+            ref="select"
+            v-model:value="value1"
+            class="slinderStyle"
+            @focus="focus"
+            :showSearch="true"
+          >
+            <a-select-option
+              v-for="item in valueIndustri"
+              :key="item"
+              :value="item"
+              >{{ item }}</a-select-option
+            >
+          </a-select>
+          <a-button type="button" class="submitButton">Cari Bisnis</a-button>
+        </a-space>
+      </div>
+      <div class="selection__franchese__mobile">
+        <a-row>
+          <a-col class="mobileSelectionCol" :span="24">
+            <section class="holdSlider">
+              <a-button
+                class="slinderStyle__mobile"
+                :class="showValue ? '' : 'btnFrenchese'"
+                @click="activedSlider"
+              >
+                {{
+                  showValue
+                    ? `Rp. ${parseInt(value[0])?.toLocaleString(
                         'id-ID'
                       )} - Rp. ${parseInt(value[1])?.toLocaleString('id-ID')}`
-                    }}
-                  </p>
-                  <a-slider
-                    class="slider__style"
-                    v-model:value="value"
-                    @change="read()"
-                    range
-                    :step="1000"
-                    :max="1000000"
-                    :min="0"
-                    :tip-formatter="null"
-                  />
-                </a-col>
-              </a-row>
-            </a-card>
-          </div>
-        </section>
-
-        <a-select
-          v-model:value="valueMultiple"
-          mode="multiple"
-          class="sliderMultipled slinderStyle"
-          placeholder="Lokasi"
-          :showArrow="true"
-          :options="
-            valueOption.map((item, i) => ({
-              value: item
-            }))
-          "
-        >
-        </a-select>
-        <a-select
-          placeholder="industri"
-          ref="select"
-          v-model:value="value1"
-          class="slinderStyle"
-          @focus="focus"
-          :showSearch="true"
-        >
-          <a-select-option
-            v-for="item in valueIndustri"
-            :key="item"
-            :value="item"
-            >{{ item }}</a-select-option
+                    : 'Harga Franchise'
+                }}
+                <DownOutlined v-if="!showValue" class="logoFranchise" />
+              </a-button>
+              <div v-if="showSlider == true" class="slider__franchaseSalary">
+                <a-card :bordered="true" @mouseleave="close" class="cardSlider">
+                  <a-row>
+                    <a-col class="title__price" :span="24">
+                      <p>Price Range :</p>
+                      <p>
+                        {{
+                          `Rp. ${parseInt(value[0])?.toLocaleString(
+                            'id-ID'
+                          )} - Rp. ${parseInt(value[1])?.toLocaleString(
+                            'id-ID'
+                          )}`
+                        }}
+                      </p>
+                      <a-slider
+                        class="slider__style"
+                        v-model:value="value"
+                        @change="read()"
+                        range
+                        :step="1000"
+                        :max="1000000"
+                        :min="0"
+                        :tip-formatter="null"
+                      />
+                    </a-col>
+                  </a-row>
+                </a-card>
+              </div>
+            </section>
+          </a-col>
+          <a-col class="mobileSelectionCol" :span="24">
+            <a-select
+              v-model:value="valueMultiple"
+              mode="multiple"
+              class="sliderMultipled slinderSelect__mobile"
+              placeholder="Lokasi"
+              :showArrow="true"
+              :options="
+                valueOption.map((item, i) => ({
+                  value: item
+                }))
+              "
+            >
+            </a-select>
+          </a-col>
+          <a-col class="mobileSelectionCol" :span="24">
+            <a-select
+              placeholder="industri"
+              ref="select"
+              v-model:value="value1"
+              class="slinderSelect__mobile1"
+              @focus="focus"
+              :showSearch="true"
+            >
+              <a-select-option
+                v-for="item in valueIndustri"
+                :key="item"
+                :value="item"
+                >{{ item }}</a-select-option
+              >
+            </a-select>
+          </a-col>
+          <a-col :span="24">
+            <a-button type="button" class="submitButton"
+              >Cari Bisnis</a-button
+            ></a-col
           >
-        </a-select>
-        <a-button type="button" class="submitButton">Cari Bisnis</a-button>
-      </a-space>
+        </a-row>
+      </div>
     </a-col>
   </a-row>
 </template>
@@ -121,11 +210,26 @@ export default {
 .slider__franchaseSalary {
   position: absolute;
   width: 400px;
-  top: 45px;
+  top: 60px;
   left: 50%;
   z-index: 1;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
+}
+.cardSlider {
+  border-radius: 15px;
+  background: #fafafa;
+}
+.cardSlider::before {
+  content: '';
+  position: absolute;
+  left: 42%;
+  top: -20px;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid #f7f7f7;
 }
 .btnFrenchese {
   display: flex;
@@ -155,6 +259,7 @@ export default {
 :deep(.ant-select-selector) {
   border-radius: 10px !important;
 }
+
 .slinderStyle:nth-child(0) {
   width: 220px;
   text-align: center;
@@ -177,5 +282,67 @@ export default {
   color: white;
   outline: none;
   border: none;
+}
+.selection__franchese__mobile {
+  display: none;
+}
+.title__price p {
+  margin: 0;
+  font-weight: bold;
+}
+@media (max-width: 918px) {
+  .selection__franchese {
+    display: none;
+    justify-content: unset;
+  }
+
+  .selection__franchese__mobile {
+    display: block;
+  }
+  .slinderSelect__mobile {
+    width: 90%;
+    display: block;
+    border-radius: 10px;
+    margin: 0 auto;
+  }
+  .slinderSelect__mobile:deep(.ant-select-selector) {
+    padding: 5px 4px !important;
+  }
+  .slinderSelect__mobile1:deep(.ant-select-selector) {
+    height: 40px;
+    padding: 5px 10px;
+  }
+  .slinderSelect__mobile1 {
+    width: 89.9%;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    border-radius: 10px;
+  }
+  .slinderStyle__mobile {
+    width: 89.9%;
+    height: 40px;
+    margin: 0 auto;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+  }
+  .submitButton {
+    width: 89.9%;
+    display: block;
+    margin: 0 auto;
+    height: 50px;
+  }
+  .slider__franchaseSalary {
+    top: 65px;
+  }
+  .mobileSelectionCol {
+    margin: 10px 0 14px 0;
+  }
+}
+@media (max-width: 395px) {
+  .slider__franchaseSalary {
+    width: 350px;
+  }
 }
 </style>
