@@ -1,18 +1,28 @@
 <template>
   <a-row>
-    <a-col :span="16" :offset="4">
+    <a-col
+      :xs="{ span: 24 }"
+      :md="{ span: 20, offset: 1 }"
+      :lg="{ span: 12, offset: 4 }"
+    >
       <section class="title__Artikel">
         <h2>Artikel Terbaru</h2>
         <p>Pelajari berbagai info terbaru mengenai bisnis waralaba</p>
       </section>
     </a-col>
-    <a-col :span="16" :offset="4" style="overflow: hidden">
+    <a-col
+      :xs="{ span: 22, offset: 1 }"
+      :lg="{ span: 16, offset: 4 }"
+      style="overflow: hidden"
+    >
       <div class="card_artikel">
         <a-carousel
           class="slick_artikel"
           :dots="false"
+          :responsive="Caraousel"
           :draggable="true"
           :slidesToShow="2"
+          :autoplay="true"
         >
           <div v-for="item in 5" :key="item">
             <a-card class="articel_cardBody">
@@ -52,6 +62,38 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'FeaturedComponent',
 
+  setup() {
+    const Caraousel = [
+      {
+        breakpoint: 1437,
+        settings: {
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          centerPadding: '0px',
+          slidesToShow: 1
+        }
+      },
+      {
+        breakpoint: 1025,
+        settings: {
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 1622,
+        settings: {
+          slidesToShow: 3
+        }
+      }
+    ]
+    return {
+      Caraousel
+    }
+  },
   methods: {}
 })
 </script>
@@ -107,5 +149,32 @@ export default defineComponent({
 
 .ant-carousel :deep(.slick-slide h3) {
   color: #fff;
+}
+
+@media (max-width: 767px) {
+  .title__Artikel {
+    text-align: center;
+    margin-top: 30px;
+  }
+}
+@media (max-width: 573px) {
+  .slick_artikel {
+    min-width: 100%;
+  }
+  .card_artikel {
+    background: rgb(231, 231, 231);
+    height: max-content;
+    padding: 10px 10px 10px 10px;
+    margin-top: 20px;
+    overflow: inherit;
+  }
+  .articel_cardBody {
+    margin: 0 5px;
+  }
+}
+@media (max-width: 361px) {
+  :deep(.slick-next) {
+    right: 5px !important;
+  }
 }
 </style>

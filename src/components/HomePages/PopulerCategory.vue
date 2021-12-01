@@ -1,14 +1,24 @@
 <template>
   <a-row class="row__populer">
-    <a-col :span="16" :offset="4">
+    <a-col
+      :xs="{ span: 24 }"
+      :md="{ span: 20, offset: 1 }"
+      :lg="{ span: 12, offset: 4 }"
+    >
       <section class="title__Populer">
         <h2>Kategori Populer</h2>
         <p>Temukan kategori bisnis terpopuler</p>
       </section>
     </a-col>
-    <a-col :span="16" :offset="4">
+    <a-col :xs="{ span: 22, offset: 1 }" :lg="{ span: 16, offset: 4 }">
       <section class="title__Populer">
-        <a-carousel :slidesToShow="4" :dots="false" class="slick" arrows>
+        <a-carousel
+          :slidesToShow="4"
+          :responsive="Caraousel"
+          :dots="false"
+          class="slick"
+          arrows
+        >
           <template #prevArrow>
             <div class="custom-slick-arrow" style="left: -12px; zindex: 1">
               <a-button class="button__Arrow"><LeftOutlined /></a-button>
@@ -51,6 +61,38 @@ export default defineComponent({
   components: {
     LeftOutlined,
     RightOutlined
+  },
+  setup() {
+    const Caraousel = [
+      {
+        breakpoint: 1437,
+        settings: {
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          centerPadding: '0px',
+          slidesToShow: 1
+        }
+      },
+      {
+        breakpoint: 1025,
+        settings: {
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 1622,
+        settings: {
+          slidesToShow: 3
+        }
+      }
+    ]
+    return {
+      Caraousel
+    }
   }
 })
 </script>
@@ -113,5 +155,15 @@ export default defineComponent({
 }
 .ant-carousel :deep(.custom-slick-arrow:hover) {
   opacity: 0.5;
+}
+@media (max-width: 767px) {
+  .title__Populer {
+    text-align: center;
+  }
+}
+@media (max-width: 361px) {
+  :deep(.slick-next) {
+    right: 5px !important;
+  }
 }
 </style>

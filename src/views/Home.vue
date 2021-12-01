@@ -4,22 +4,22 @@
       <headerComponet />
       <a-layout-content class="content__costums">
         <mainSection />
-        <!-- <caraouselContent /> -->
-        <!-- <bisnisComponent /> -->
-        <!-- <populerCategory /> -->
-        <!-- <whyRintisan /> -->
-        <!-- <risingStarComponent /> -->
-        <!-- <featureBrand /> -->
-        <!-- <veriviedBusiness /> -->
-        <!-- <ArtikelComponent /> -->
-        <!-- <limputanMedia /> -->
+        <caraouselContent />
+        <bisnisComponent />
+        <populerCategory />
+        <whyRintisan />
+        <risingStarComponent />
+        <featureBrand />
+        <veriviedBusiness />
+        <ArtikelComponent />
+        <limputanMedia />
       </a-layout-content>
-      <!-- <a-layout-footer class="footer"> -->
-      <!-- <Footer /> -->
-      <!-- </a-layout-footer> -->
-      <!-- <a-layout-footer class="footer__2"> -->
-      <!-- <Footer2 /> -->
-      <!-- </a-layout-footer> -->
+      <a-layout-footer class="footer">
+        <Footer />
+      </a-layout-footer>
+      <a-layout-footer class="footer__2">
+        <Footer2 />
+      </a-layout-footer>
     </div>
   </a-layout>
 </template>
@@ -28,33 +28,33 @@
 // @ is an alias to /src
 import headerComponet from '../components/HomePages/headerComponen.vue'
 import mainSection from '../components/HomePages/mainSection.vue'
-// import caraouselContent from '../components/HomePages/caraouselContent.vue'
-// import bisnisComponent from '../components/HomePages/BisnisComponent.vue'
-// import populerCategory from '../components/HomePages/PopulerCategory.vue'
-// import whyRintisan from '../components/HomePages/WhyRintisan.vue'
-// import risingStarComponent from '../components/HomePages/RisingStarComponent.vue'
-// import featureBrand from '../components/HomePages/FeaturedBrandComponent'
-// import veriviedBusiness from '../components/HomePages/VerifiedBusiness'
-// import ArtikelComponent from '../components/HomePages/ArtikelComponent.vue'
-// import limputanMedia from '../components/HomePages/liputanComponent.vue'
-// import Footer from '../components/HomePages/Footer.vue'
-// import Footer2 from '../components/HomePages/Footer2.vue'
+import caraouselContent from '../components/HomePages/caraouselContent.vue'
+import bisnisComponent from '../components/HomePages/BisnisComponent.vue'
+import populerCategory from '../components/HomePages/PopulerCategory.vue'
+import whyRintisan from '../components/HomePages/WhyRintisan.vue'
+import risingStarComponent from '../components/HomePages/RisingStarComponent.vue'
+import featureBrand from '../components/HomePages/FeaturedBrandComponent'
+import veriviedBusiness from '../components/HomePages/VerifiedBusiness'
+import ArtikelComponent from '../components/HomePages/ArtikelComponent.vue'
+import limputanMedia from '../components/HomePages/liputanComponent.vue'
+import Footer from '../components/HomePages/Footer.vue'
+import Footer2 from '../components/HomePages/Footer2.vue'
 export default {
   name: 'HomePage',
   components: {
     headerComponet,
-    mainSection
-    // caraouselContent,
-    // bisnisComponent,
-    // populerCategory,
-    // whyRintisan,
-    // risingStarComponent,
-    // featureBrand,
-    // veriviedBusiness,
-    // ArtikelComponent,
-    // limputanMedia,
-    // Footer,
-    // Footer2
+    mainSection,
+    caraouselContent,
+    bisnisComponent,
+    populerCategory,
+    whyRintisan,
+    risingStarComponent,
+    featureBrand,
+    veriviedBusiness,
+    ArtikelComponent,
+    limputanMedia,
+    Footer,
+    Footer2
   },
   data() {
     return {
@@ -101,5 +101,12 @@ export default {
 
 [data-theme='dark'] .site-layout-content {
   background: #141414;
+}
+
+@media (max-width: 570px) {
+  :deep(.ant-layout-footer) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
 </style>

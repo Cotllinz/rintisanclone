@@ -30,7 +30,7 @@ export default defineComponent({
 /* For demo */
 .ant-carousel :deep(.slick-slide) {
   height: 370px;
-  background: #364d79;
+
   overflow: hidden;
 }
 
@@ -62,5 +62,11 @@ export default defineComponent({
 
 .carousel__style {
   margin-top: 20px;
+}
+@media (max-width: 450px) {
+  .ant-carousel :deep(.slick-slide) {
+    height: min-content;
+    overflow: hidden;
+  }
 }
 </style>

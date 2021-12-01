@@ -1,8 +1,8 @@
 <template>
   <a-row>
-    <a-col class="footer_1" :span="16" :offset="4">
+    <a-col class="footer_1" :xs="{ span: 24 }" :lg="{ span: 16, offset: 4 }">
       <a-row :gutter="16">
-        <a-col :span="8">
+        <a-col :xs="{ span: 24, order: 1 }" :md="{ span: 8 }" :lg="{ span: 8 }">
           <div class="kontak__us">
             <h3>Kontak Kami</h3>
             <p>Perkantoran mutiara taman palem</p>
@@ -14,7 +14,11 @@
             <p>Email : cs@rintisan.id</p>
           </div>
         </a-col>
-        <a-col :span="8">
+        <a-col
+          :xs="{ span: 24, order: 3 }"
+          :md="{ span: 8, order: 2 }"
+          :lg="{ span: 8 }"
+        >
           <div class="mediaSocial">
             <h3>Ikuti Media Sosial Kami</h3>
             <section class="imageSocialMedia">
@@ -35,7 +39,11 @@
             </section>
           </div>
         </a-col>
-        <a-col :span="8">
+        <a-col
+          :xs="{ span: 24, order: 2 }"
+          :md="{ span: 8, order: 3 }"
+          :lg="{ span: 8 }"
+        >
           <div class="about_rintisan">
             <h3>Ikuti Media Sosial Kami</h3>
             <section v-for="items in aboutText" :key="items">
@@ -43,7 +51,7 @@
             </section>
           </div>
         </a-col>
-        <a-col class="subcribe_style" :span="24">
+        <a-col class="subcribe_style" :xs="{ span: 24, order: 4 }">
           <h3 style="font-weight: 600">
             Langganan untuk mendapatkan info terbaru
           </h3>
@@ -115,11 +123,33 @@ export default defineComponent({
 .mediaSocial {
   text-align: center;
 }
+.text_links:hover {
+  color: rgb(0, 0, 0);
+}
 :deep(.ant-input) {
   border-radius: 10px 0 0 10px;
   color: rgb(0, 0, 0);
 }
 h3 {
   color: rgb(255, 255, 255);
+}
+
+@media (max-width: 767px) {
+  .mediaSocial {
+    margin: 20px 0 0 0;
+    text-align: unset;
+  }
+  .about_rintisan {
+    float: unset;
+    margin-top: 30px;
+  }
+  .input__subcribe {
+    width: 50%;
+  }
+}
+@media (max-width: 393px) {
+  .input__subcribe {
+    width: 40%;
+  }
 }
 </style>

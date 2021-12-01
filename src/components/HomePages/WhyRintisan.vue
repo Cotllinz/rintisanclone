@@ -1,20 +1,32 @@
 <template>
   <a-row>
-    <a-col :span="16" :offset="4">
+    <a-col
+      :xs="{ span: 24 }"
+      :md="{ span: 20, offset: 1 }"
+      :lg="{ span: 16, offset: 4 }"
+    >
       <section class="title__whyRintisan">
         <h2>Kenapa Rintisan ?</h2>
         <p>Lihat mengapa franchisor di Rintisan berbeda dengan yang lain</p>
       </section>
     </a-col>
-    <a-col :span="16" :offset="4">
+    <a-col
+      :xs="{ span: 24 }"
+      :md="{ span: 22, offset: 1 }"
+      :lg="{ span: 16, offset: 4 }"
+    >
       <div class="whyRintisan">
         <section v-for="items in 4" :key="items" class="whyRintisan__detail">
           <div class="rounded"></div>
-          <h3>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h3>
+          <h3>Lorem ipsum dolor sit amet consectetur</h3>
         </section>
       </div>
     </a-col>
-    <a-col :span="16" :offset="4" class="slider__holdUp">
+    <a-col
+      :xs="{ span: 23, offset: 1 }"
+      :lg="{ span: 16, offset: 4 }"
+      class="slider__holdUp"
+    >
       <div class="slider__whyRintisan">
         <a-carousel :slidesToShow="2" :dots="false" :draggable="true">
           <div v-for="items in 4" :key="items">
@@ -90,5 +102,72 @@ export default defineComponent({
 
 .ant-carousel :deep(.slick-slide h3) {
   color: rgb(0, 0, 0);
+}
+@media (max-width: 991px) {
+  .rounded {
+    width: 120px;
+    background-color: rgb(168, 168, 168);
+    height: 120px;
+    border-radius: 50%;
+  }
+  .slider__whyRintisan {
+    margin-top: 50px;
+    min-width: 150vw;
+  }
+}
+
+@media (max-width: 767px) {
+  .title__whyRintisan {
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .rounded {
+    width: 100px;
+    background-color: rgb(168, 168, 168);
+    height: 100px;
+    border-radius: 50%;
+  }
+  .slider__whyRintisan {
+    margin-top: 50px;
+    min-width: 150vw;
+  }
+  .whyRintisan__detail {
+    margin-top: 30px;
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+  .title__whyRintisan {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 471px) {
+  .rounded {
+    width: 70px;
+    background-color: rgb(168, 168, 168);
+    height: 70px;
+    border-radius: 50%;
+  }
+  .slider__whyRintisan {
+    margin-top: 50px;
+    min-width: 150vw;
+  }
+  .whyRintisan__detail {
+    margin-top: 30px;
+    font-size: 8px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+  .title__whyRintisan {
+    text-align: center;
+    margin-top: 10px;
+  }
 }
 </style>

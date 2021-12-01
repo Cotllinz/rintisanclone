@@ -1,6 +1,6 @@
 <template>
   <a-row>
-    <a-col :span="16" :offset="4">
+    <a-col :xs="{ span: 20, offset: 2 }" :lg="{ span: 16, offset: 4 }">
       <div class="disclamer_footer">
         <section class="disclamer__desc">
           <h5>Disclaimer:</h5>
@@ -55,5 +55,23 @@ h5 {
 }
 .images_desc p {
   margin-top: 10px;
+}
+@media (max-width: 708px) {
+  .disclamer_footer {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: unset;
+    align-items: unset;
+  }
+  .disclamer__desc {
+    width: 80%;
+  }
+  .images_desc {
+    align-items: baseline;
+    display: flex;
+    margin-top: 40px;
+    flex-direction: column;
+  }
 }
 </style>

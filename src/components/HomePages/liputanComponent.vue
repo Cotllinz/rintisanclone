@@ -3,10 +3,14 @@
     <a-col :span="16" :offset="4">
       <h2 class="title">Liputan Media</h2>
     </a-col>
-    <a-col :span="16" class="images__partner" :offset="4">
+    <a-col
+      :lg="{ span: 16, offset: 4 }"
+      :xs="{ span: 24 }"
+      class="images__partner"
+    >
       <div>
-        <a-row :gutter="16">
-          <a-col class="gutter-row" :span="8">
+        <a-row>
+          <a-col class="gutter-row" :lg="{ span: 8 }" :xs="{ span: 12 }">
             <div class="gutter-box">
               <img
                 :src="require(`../../${PartnerIcon.Partner1}`)"
@@ -14,7 +18,7 @@
               />
             </div>
           </a-col>
-          <a-col class="gutter-row" :span="8">
+          <a-col class="gutter-row" :lg="{ span: 8 }" :xs="{ span: 12 }">
             <div class="gutter-box">
               <img
                 :src="require(`../../${PartnerIcon.Partner2}`)"
@@ -22,7 +26,7 @@
               />
             </div>
           </a-col>
-          <a-col class="gutter-row" :span="8">
+          <a-col class="gutter-row" :lg="{ span: 8 }" :xs="{ span: 12 }">
             <div class="gutter-box">
               <img
                 :src="require(`../../${PartnerIcon.Partner3}`)"
@@ -30,7 +34,7 @@
               />
             </div>
           </a-col>
-          <a-col class="gutter-row" :span="8">
+          <a-col class="gutter-row" :lg="{ span: 8 }" :xs="{ span: 12 }">
             <div class="gutter-box">
               <img
                 :src="require(`../../${PartnerIcon.Partner4}`)"
@@ -38,7 +42,7 @@
               />
             </div>
           </a-col>
-          <a-col class="gutter-row" :span="8">
+          <a-col class="gutter-row" :lg="{ span: 8 }" :xs="{ span: 12 }">
             <div class="gutter-box">
               <img
                 :src="require(`../../${PartnerIcon.Partner5}`)"
@@ -46,7 +50,7 @@
               />
             </div>
           </a-col>
-          <a-col class="gutter-row" :span="8">
+          <a-col class="gutter-row" :lg="{ span: 8 }" :xs="{ span: 12 }">
             <div class="gutter-box">
               <img
                 :src="require(`../../${PartnerIcon.Partner6}`)"
@@ -95,5 +99,13 @@ export default defineComponent({
   padding: 15px 0;
   text-align: center;
   margin: 10px 0;
+}
+.gutter-box img {
+  width: 80%;
+}
+@media (max-width: 450px) {
+  .gutter-box img {
+    width: 80%;
+  }
 }
 </style>
