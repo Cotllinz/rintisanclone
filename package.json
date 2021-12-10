@@ -10,10 +10,12 @@
   "dependencies": {
     "ant-design-vue": "^2.2.8",
     "aos": "^2.3.4",
+    "axios": "^0.24.0",
     "core-js": "^3.6.5",
     "vue": "^3.2.23",
     "vue-router": "^4.0.0-0",
-    "vue-slick-carousel": "^1.0.6"
+    "vue-slick-carousel": "^1.0.6",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
