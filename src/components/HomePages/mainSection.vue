@@ -7,7 +7,7 @@
             <a-button
               class="slinderStyle"
               :class="showValue ? '' : 'btnFrenchese'"
-              @click="activedSlider"
+              @click.stop="activedSlider()"
             >
               {{
                 showValue
@@ -18,32 +18,41 @@
               }}
               <DownOutlined v-if="!showValue" class="logoFranchise" />
             </a-button>
-            <div v-if="showSlider == true" class="slider__franchaseSalary">
-              <a-card :bordered="true" @mouseleave="close" class="cardSlider">
-                <a-row>
-                  <a-col class="title__price" :span="24">
-                    <p>Price Range :</p>
-                    <p>
-                      {{
-                        `Rp. ${parseInt(value[0])?.toLocaleString(
-                          'id-ID'
-                        )} - Rp. ${parseInt(value[1])?.toLocaleString('id-ID')}`
-                      }}
-                    </p>
-                    <a-slider
-                      class="slider__style"
-                      v-model:value="value"
-                      @change="read()"
-                      range
-                      :step="1000"
-                      :max="1000000"
-                      :min="0"
-                      :tip-formatter="null"
-                    />
-                  </a-col>
-                </a-row>
-              </a-card>
-            </div>
+            <transition name="modal">
+              <div v-if="showSlider == true" class="slider__franchaseSalary">
+                <a-card
+                  :bordered="true"
+                  id="modal_id"
+                  v-click-outside="closeModal"
+                  class="cardSlider"
+                >
+                  <a-row>
+                    <a-col class="title__price" :span="24">
+                      <p>Price Range :</p>
+                      <p>
+                        {{
+                          `Rp. ${parseInt(value[0])?.toLocaleString(
+                            'id-ID'
+                          )} - Rp. ${parseInt(value[1])?.toLocaleString(
+                            'id-ID'
+                          )}`
+                        }}
+                      </p>
+                      <a-slider
+                        class="slider__style"
+                        v-model:value="value"
+                        @change="read()"
+                        range
+                        :step="1000"
+                        :max="1000000"
+                        :min="0"
+                        :tip-formatter="null"
+                      />
+                    </a-col>
+                  </a-row>
+                </a-card>
+              </div>
+            </transition>
           </section>
 
           <a-select
@@ -176,6 +185,7 @@ export default {
   components: {
     DownOutlined
   },
+  emits: ['click'],
   data() {
     return {
       showSlider: false,
@@ -194,6 +204,18 @@ export default {
         : (this.showSlider = false)
     },
     close() {
+      // this.showSlider = true
+    },
+
+    classCheck(e) {
+      //close component offside click
+      const getId = document.getElementById('modal_id')
+      console.log(getId.contains(e))
+      if (!getId.contains(e)) {
+        this.showSlider = false
+      }
+    },
+    closeModal() {
       this.showSlider = false
     },
     read() {
@@ -203,6 +225,14 @@ export default {
 }
 </script>
 <style scoped>
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 1s;
+}
+.modal-enter, .modal-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
 .selection__franchese {
   display: flex;
   justify-content: center;
@@ -218,6 +248,7 @@ export default {
 }
 .cardSlider {
   border-radius: 15px;
+
   background: #fafafa;
 }
 .cardSlider::before {
@@ -340,6 +371,7 @@ export default {
     margin: 10px 0 14px 0;
   }
 }
+
 @media (max-width: 395px) {
   .slider__franchaseSalary {
     width: 350px;

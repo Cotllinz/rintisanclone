@@ -9,6 +9,9 @@ const auth = {
   },
   mutations: {
     setUser(state, user) {
+      console.log(user)
+
+      localStorage.setItem('token', user.token)
       state.user = user
     },
     setToken(state, token) {
@@ -29,7 +32,6 @@ const auth = {
           )
           .then((result) => {
             context.commit('setUser', result.data.data)
-            localStorage.setItem('token', result.data.data.token)
             resolve(result)
           })
           .catch((error) => {
@@ -89,8 +91,8 @@ const auth = {
     }
   },
   getters: {
-    isLogin(state) {
-      return state.token !== null
+    isLogin() {
+      return localStorage.getItem('token') || null
     },
     isVendor(state) {
       return state.user.role === 'vendor'

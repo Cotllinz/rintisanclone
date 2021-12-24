@@ -1,7 +1,7 @@
 <template>
   <a-layout class="layout">
     <div class="newLeyouting">
-      <headerComponet />
+      <headerComponent />
       <a-layout-content class="content__costums">
         <mainSection />
         <caraouselContent />
@@ -26,35 +26,32 @@
 
 <script>
 // @ is an alias to /src
-import headerComponet from '../components/HomePages/headerComponen.vue'
-import mainSection from '../components/HomePages/mainSection.vue'
-import caraouselContent from '../components/HomePages/caraouselContent.vue'
-import bisnisComponent from '../components/HomePages/BisnisComponent.vue'
-import populerCategory from '../components/HomePages/PopulerCategory.vue'
-import whyRintisan from '../components/HomePages/WhyRintisan.vue'
-import risingStarComponent from '../components/HomePages/RisingStarComponent.vue'
-import featureBrand from '../components/HomePages/FeaturedBrandComponent'
-import veriviedBusiness from '../components/HomePages/VerifiedBusiness'
-import ArtikelComponent from '../components/HomePages/ArtikelComponent.vue'
-import limputanMedia from '../components/HomePages/liputanComponent.vue'
-import Footer from '../components/HomePages/Footer.vue'
-import Footer2 from '../components/HomePages/Footer2.vue'
+import { defineAsyncComponent } from 'vue'
+import Loading from '../components/Loading/index.vue'
+const asyncModalWithOptions = (name) =>
+  //Async Lazy Load PerComponent
+  defineAsyncComponent({
+    loader: () => import('../components/HomePages/' + name + '.vue'),
+    loadingComponent: Loading,
+    timeout: 3000,
+    delay: 200
+  })
 export default {
   name: 'HomePage',
   components: {
-    headerComponet,
-    mainSection,
-    caraouselContent,
-    bisnisComponent,
-    populerCategory,
-    whyRintisan,
-    risingStarComponent,
-    featureBrand,
-    veriviedBusiness,
-    ArtikelComponent,
-    limputanMedia,
-    Footer,
-    Footer2
+    headerComponent: asyncModalWithOptions('headerComponen'),
+    mainSection: asyncModalWithOptions('mainSection'),
+    caraouselContent: asyncModalWithOptions('caraouselContent'),
+    bisnisComponent: asyncModalWithOptions('BisnisComponent'),
+    populerCategory: asyncModalWithOptions('PopulerCategory'),
+    whyRintisan: asyncModalWithOptions('WhyRintisan'),
+    risingStarComponent: asyncModalWithOptions('RisingStarComponent'),
+    featureBrand: asyncModalWithOptions('FeaturedBrandComponent'),
+    veriviedBusiness: asyncModalWithOptions('VerifiedBusiness'),
+    ArtikelComponent: asyncModalWithOptions('ArtikelComponent'),
+    limputanMedia: asyncModalWithOptions('liputanComponent'),
+    Footer: asyncModalWithOptions('Footer'),
+    Footer2: asyncModalWithOptions('Footer2')
   },
   data() {
     return {

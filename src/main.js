@@ -5,20 +5,19 @@ import 'ant-design-vue/dist/antd.css'
 import 'aos/dist/aos.css'
 import Antd from 'ant-design-vue'
 import store from './store'
-// const app = createApp(App)
+// import npProggres from 'vue-nprogress'
+import { closeComponent } from './actionDirective/'
 
-createApp(App).use(store).use(router).use(Antd).mount('#app')
-/* app.use(store)
-app.use(router)
-app.use(
-  AOS.init({
-    delay: 200, // values from 0 to 3000, with step 50ms
-    duration: 700, // values from 0 to 3000, with step 50ms
-    // default easing for AOS animations
-    once: false // whether animation should happen only once - while scrolling down
-  })
-)
+// const options = {
+//   latencyThreshold: 200, // Number of ms before progressbar starts showing, default: 100,
+//   router: true, // Show progressbar when navigating routes, default: true
+//   http: false // Show progressbar when doing Vue.http, default: true
+// }
 
-app.use(Antd) // same as Vue.use in Vue 2.X
-
-app.mount('#app') */
+// const NPproggres = new npProggres()
+createApp(App)
+  .use(store)
+  .use(router)
+  .use(Antd)
+  .directive('click-outside', closeComponent)
+  .mount('#app')

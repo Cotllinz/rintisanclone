@@ -54,18 +54,38 @@
       </section>
     </a-col>
     <a-col :span="24">
-      <a-button class="buttonShowAll">Lihat Semua</a-button>
+      <a-button
+        type="button"
+        @click="changeVisibelityModal"
+        class="buttonShowAll"
+        >Lihat Semua</a-button
+      >
     </a-col>
+    <ModalComponent :turnModal="turnModal" />
   </a-row>
 </template>
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent, reactive } from 'vue'
 import { RightOutlined, LeftOutlined } from '@ant-design/icons-vue'
+import ModalComponent from '../../chillComponent//propsLearn.vue'
 export default defineComponent({
   name: 'ComponentBisnis',
   components: {
     LeftOutlined,
-    RightOutlined
+    RightOutlined,
+    ModalComponent
+  },
+  setup() {
+    const turnModal = reactive({
+      turnModalConfig: false
+    })
+    const changeVisibelityModal = () => {
+      turnModal.turnModalConfig = true
+    }
+    return {
+      turnModal,
+      changeVisibelityModal
+    }
   },
   data() {
     return {

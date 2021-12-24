@@ -13,7 +13,8 @@
     "axios": "^0.24.0",
     "core-js": "^3.6.5",
     "vue": "^3.2.23",
-    "vue-router": "^4.0.0-0",
+    "vue-nprogress": "^0.2.0",
+    "vue-router": "^4.0.12",
     "vue-slick-carousel": "^1.0.6",
     "vuex": "^4.0.2"
   },

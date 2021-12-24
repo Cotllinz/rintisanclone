@@ -1,6 +1,14 @@
 <template>
-  <router-view />
+  <div id="app">
+    <router-view />
+  </div>
 </template>
+
+<script>
+export default {
+  name: 'apps'
+}
+</script>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Arvo:wght@700&family=Poppins:wght@400;500;700&display=swap');

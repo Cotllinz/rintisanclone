@@ -1,44 +1,86 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-function lazyLoad(path) {
-  return () => import(`../views/${path}`)
+import store from '../store'
+
+const AsyncRoute = (name) => {
+  return () => import('../views/' + name + '.vue')
 }
+
 const routes = [
   {
-    path: '/',
+    path: '/homePage',
     name: 'HomePage',
-    component: lazyLoad('Home.vue')
+    component: AsyncRoute('Home'),
+
+    meta: { requiresAuth: true, requiresHR: true }
   },
   {
-    path: '/login',
+    path: '/',
     name: 'Login',
-    component: lazyLoad('login.vue')
+    component: AsyncRoute('login'),
+    meta: { requiresVisitor: true }
+  },
+  {
+    path: '/homeHr',
+    name: 'HomeHR',
+    component: AsyncRoute('HomeHr'),
+    meta: { requiresAuth: true, requiresVendor: true }
+  },
+  {
+    path: '/notAuth',
+    name: 'notAuth',
+    component: AsyncRoute('notAuth')
   }
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(),
   routes
 })
 
-/* router.beforeEach((to, from, next) => {
-  if (to.matched.some((record) => record.meta.requiresAuth)) {
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth) {
     if (!store.getters.isLogin) {
       next({
-        path: '/'
+        name: 'Login',
+        replace: true
       })
     } else {
-      next()
+      if (to.meta.requiresHR) {
+        if (store.getters.isHR) {
+          next()
+        } else {
+          next({
+            name: 'notAuth'
+          })
+        }
+      } else if (to.meta.requiresVendor) {
+        if (store.getters.requiresVendor) {
+          next()
+        } else {
+          next({
+            name: 'notAuth'
+          })
+        }
+      } else {
+        next({
+          name: 'Login',
+          replace: true
+        })
+      }
     }
-  } else if (to.matched.some((record) => record.meta.requiresVisitor)) {
+  } else if (to.meta.requiresVisitor) {
     if (store.getters.isLogin) {
       next({
-        path: '/home'
+        name: 'HomePage',
+        replace: true
       })
     } else {
       next()
     }
+  } else {
+    next()
   }
-}) */
+})
 
 export default router

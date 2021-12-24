@@ -12,8 +12,8 @@
       />
       <div class="group__direction">
         <a @click="franchisor">Anda Franchisor?</a>
-        <a>Register</a>
-        <a>Login</a>
+        <a @click="goHrPage">Register</a>
+        <a @click="franchisor"> Login</a>
       </div>
       <div
         id="nav-icon3"
@@ -38,7 +38,7 @@
       <div class="mobile_direction">
         <a>Register</a>
         <a @click="franchisor">Anda Franchisor?</a>
-        <a>Login</a>
+        <a @click="franchisor">Login</a>
       </div>
     </div>
   </a-layout-header>
@@ -57,6 +57,12 @@ export default {
   methods: {
     showOpened() {
       !this.ShowOpen ? (this.ShowOpen = true) : (this.ShowOpen = false)
+    },
+    franchisor() {
+      this.$router.push('/')
+    },
+    goHrPage() {
+      this.$router.push('/homeHr')
     }
   }
 }
