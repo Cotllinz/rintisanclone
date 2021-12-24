@@ -34,7 +34,7 @@ const asyncModalWithOptions = (name) =>
     loader: () => import('../components/HomePages/' + name + '.vue'),
     loadingComponent: Loading,
     timeout: 3000,
-    delay: 200
+    delay: 3000
   })
 export default {
   name: 'HomePage',
